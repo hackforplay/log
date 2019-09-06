@@ -1,0 +1,33 @@
+{
+  "name": "@hackforplay/log",
+  "version": "1.0.0",
+  "description": "Logger for hackforplay written in TS.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "ava",
+    "watch": "ava --watch"
+  },
+  "author": "HackforPlay, Inc.",
+  "license": "MIT",
+  "ava": {
+    "compileEnhancements": false,
+		"extensions": [
+      "ts"
+    ],
+    "files": [
+      "./src/*.test.ts"
+    ],
+ 		"require": [
+      "ts-node/register/transpile-only"
+		]
+  },
+  "dependencies": {
+    "global": "^4.4.0"
+  },
+  "devDependencies": {
+    "ava": "^2.3.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2"
+  }
+}
