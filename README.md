@@ -13,8 +13,7 @@ const logger = createLogger();
 logger.subscribe(console.info);
 
 // Append new log to the last
-logger.append({
-    payload: 'Hello World!'
-});
+const log = logger.log;
+log('Hello World!');
 `
 ```
