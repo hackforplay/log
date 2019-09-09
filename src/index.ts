@@ -1,18 +1,14 @@
 import g from 'global';
 import { Logger } from './logger';
 
-export function createLogger<T = IDefaultStructure>(
+export function createLogger(
   primaryKey = 'Unique primary key used by @hackforplay/log'
 ) {
   if (primaryKey in g) {
-    return g[primaryKey] as Logger<T>;
+    return g[primaryKey] as Logger;
   }
 
-  const logger = new Logger<T>();
+  const logger = new Logger();
   g[primaryKey] = logger;
   return logger;
-}
-
-export interface IDefaultStructure {
-  payload: string;
 }
