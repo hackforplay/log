@@ -11,6 +11,7 @@
   },
   "author": "HackforPlay, Inc.",
   "license": "MIT",
+  "private": false,
   "ava": {
     "compileEnhancements": false,
     "extensions": [
