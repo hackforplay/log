@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "semantic-release": "semantic-release --allow-same-version",
     "test": "ava",
     "watch": "ava --watch"
   },
