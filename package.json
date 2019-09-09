@@ -12,21 +12,22 @@
   "license": "MIT",
   "ava": {
     "compileEnhancements": false,
-		"extensions": [
+    "extensions": [
       "ts"
     ],
     "files": [
       "./src/*.test.ts"
     ],
- 		"require": [
+    "require": [
       "ts-node/register/transpile-only"
-		]
+    ]
   },
   "dependencies": {
     "global": "^4.4.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
+    "semantic-release": "^15.13.24",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2"
   }
