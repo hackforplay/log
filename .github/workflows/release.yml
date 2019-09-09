@@ -10,8 +10,8 @@ jobs:
       - name: "npm ci"
         run: npm ci
 
-      - name: "npx semantic-release"
-        run: npx semantic-release --allow-same-version
+      - name: "npm run semantic-release"
+        run: npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
