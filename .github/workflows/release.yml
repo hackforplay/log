@@ -11,7 +11,7 @@ jobs:
         run: npm ci
 
       - name: "npx semantic-release"
-        run: npx semantic-release
+        run: npx semantic-release --allow-same-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
