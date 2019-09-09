@@ -12,6 +12,15 @@
   "author": "HackforPlay, Inc.",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+		"access": "public"
+	},
+	"directories": {
+		"lib": "lib"
+	},
+	"files": [
+		"lib"
+	],
   "ava": {
     "compileEnhancements": false,
     "extensions": [
