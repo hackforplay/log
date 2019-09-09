@@ -12,4 +12,5 @@ jobs:
 
       - name: "npx semantic-release"
         run: npx semantic-release
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
