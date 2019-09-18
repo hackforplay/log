@@ -12,6 +12,7 @@ const logger = createLogger();
 // Show all logs
 logger.subscribe(console.info);
 
+
 // Append new log to the last
 const log = logger.log;
 log('Hello World!');
