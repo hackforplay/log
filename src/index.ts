@@ -12,3 +12,5 @@ export function createLogger(
   g[primaryKey] = logger;
   return logger;
 }
+
+export { Logger };
