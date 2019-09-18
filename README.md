@@ -1,5 +1,8 @@
 # @hackforplay/log
 
+[![Actions Status](https://github.com/hackforplay/log/workflows/Release%20package/badge.svg)](https://github.com/hackforplay/log/actions)
+[![npm latest version](https://img.shields.io/npm/v/@hackforplay/log/latest.svg)](https://www.npmjs.com/package/@hackforplay/log)
+
 This is a simple logger written in TypeScript. Created for [@hackforplay/sandbox](https://github.com/hackforplay/sandbox) and [@hackforplay/common](https://github.com/hackforplay/common).
 
 Type definition is ready to import! d.ts is included in this package.
