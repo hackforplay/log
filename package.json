@@ -13,14 +13,14 @@
   "license": "MIT",
   "private": false,
   "publishConfig": {
-		"access": "public"
-	},
-	"directories": {
-		"lib": "lib"
-	},
-	"files": [
-		"lib"
-	],
+    "access": "public"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
   "ava": {
     "compileEnhancements": false,
     "extensions": [
