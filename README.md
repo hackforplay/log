@@ -1,6 +1,12 @@
 # @hackforplay/log
 
-This is a logger used by [@hackforplay/sandbox](https://github.com/hackforplay/sandbox) and [@hackforplay/common](https://github.com/hackforplay/common).
+This is a simple logger written in TypeScript. Created for [@hackforplay/sandbox](https://github.com/hackforplay/sandbox) and [@hackforplay/common](https://github.com/hackforplay/common).
+
+Type definition is ready to import! d.ts is included in this package.
+
+## Install
+
+`npm install @hackforplay/log`
 
 ## How to use
 
@@ -12,9 +18,42 @@ const logger = createLogger();
 // Show all logs
 logger.subscribe(console.info);
 
-
-// Append new log to the last
+// Add a new line
 const log = logger.log;
 log('Hello World!');
 `
+```
+
+## Sharing loggers between independent libraries
+
+As you use `createLogger()`, **the shared reference will be injected in global.** e.g. `window` in browsers or `self` in the Node.js.
+
+```javascript
+import { createLogger } from '@hackforplay/log';
+
+const loggerA = createLogger();
+const loggerB = createLogger();
+console.log(loggerA === loggerB); // true
+
+const loggerC = createLogger('You can use different reference with key string');
+console.log(loggerA === loggerC) // false
+
+// Yes, This is global injection :P
+console.log(loggerC === window['You can use different reference with key string']); // true
+`
+```
+
+If you hate this way, you can use constructor. This way **DO NOT** global injection.
+
+```javascript
+import { Logger } from '@hackforplay/log';
+
+const logger = new Logger();
+
+// Show all logs
+logger.subscribe(console.info);
+
+// Add a new line
+const log = logger.log;
+log('Hello World!');
 ```
