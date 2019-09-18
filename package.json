@@ -1,15 +1,26 @@
 {
   "name": "@hackforplay/log",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Logger for hackforplay written in TS.",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "semantic-release": "semantic-release --allow-same-version",
     "test": "ava",
     "watch": "ava --watch"
   },
   "author": "HackforPlay, Inc.",
   "license": "MIT",
+  "private": false,
+  "publishConfig": {
+		"access": "public"
+	},
+	"directories": {
+		"lib": "lib"
+	},
+	"files": [
+		"lib"
+	],
   "ava": {
     "compileEnhancements": false,
     "extensions": [
