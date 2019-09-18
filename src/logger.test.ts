@@ -22,3 +22,17 @@ test.cb('Subscribe', t => {
   });
   logger.log('Hello World!');
 });
+
+test('Restrict logging in subscriber', t => {
+  const logger = new Logger();
+  t.throws(
+    () => {
+      logger.subscribe(() => {
+        logger.log('log and log and... it causes infinite loop!');
+      });
+      logger.log('This is first log of the endless loop.');
+    },
+    null,
+    'log and log and... it causes infinite loop!'
+  );
+});
