@@ -10,6 +10,9 @@ jobs:
       - name: "npm ci"
         run: npm ci
 
+      - name: "npm run build"
+        run: npm run build
+
       - name: "npm run semantic-release"
         run: npm run semantic-release
         env:
