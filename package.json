@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "lint": "prettier -c 'src/**/*.{ts,js}'",
     "semantic-release": "semantic-release --allow-same-version",
-    "test": "ava",
+    "test": "npm run lint && ava",
     "watch": "ava --watch"
   },
   "author": "HackforPlay, Inc.",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "ava": "^2.3.0",
+    "prettier": "^1.18.2",
     "semantic-release": "^15.13.24",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2"
