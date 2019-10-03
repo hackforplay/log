@@ -17,4 +17,4 @@ export function log(...args: string[]) {
   createLogger().log(...args);
 }
 
-export { Logger };
+export * from './logger';
