@@ -1,6 +1,15 @@
+export interface ILogBody {
+  line: string[];
+  time: number;
+}
+
+export interface ISubscriber {
+  (line: string[], time: number): void;
+}
+
 export class Logger {
-  private lines: string[][] = [];
-  private subscribers: Set<(line: string[]) => void> = new Set();
+  private logs: ILogBody[] = [];
+  private subscribers: Set<ISubscriber> = new Set();
   private isDispatching = false;
   private assertDispatching(caller: string) {
     if (this.isDispatching) {
@@ -19,9 +28,11 @@ export class Logger {
     this.assertDispatching('log()');
     try {
       this.isDispatching = true;
-      this.lines.push(line);
+      const time = Date.now();
+      const log: ILogBody = { line, time };
+      this.logs.push(log);
       for (const subscriber of this.subscribers) {
-        subscriber(line);
+        subscriber(log.line, log.time);
       }
     } finally {
       this.isDispatching = false;
@@ -33,12 +44,12 @@ export class Logger {
    * To stop this, you may call the function that is return value of subscribe().
    * @param subscriber function that will receive all lines of this logger.
    */
-  public subscribe(subscriber: (line: string[]) => void): () => void {
+  public subscribe(subscriber: ISubscriber): () => void {
     this.assertDispatching('subscribe()');
     try {
       this.isDispatching = true;
-      for (const log of this.lines) {
-        subscriber(log);
+      for (const log of this.logs) {
+        subscriber(log.line, log.time);
       }
     } finally {
       this.isDispatching = false;
@@ -57,7 +68,7 @@ export class Logger {
    * @param wordDelimiter Separator of the words. If omitted, the lines are separated with a whitespace.
    */
   public stringify(lineDelimiter = '\n', wordDelimiter = ' ') {
-    const strings = this.lines.map(line => line.join(wordDelimiter));
+    const strings = this.logs.map(log => log.line.join(wordDelimiter));
     return strings.join(lineDelimiter);
   }
 }
