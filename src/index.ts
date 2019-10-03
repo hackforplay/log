@@ -13,4 +13,8 @@ export function createLogger(
   return logger;
 }
 
+export function log(...args: string[]) {
+  createLogger().log(...args);
+}
+
 export { Logger };
