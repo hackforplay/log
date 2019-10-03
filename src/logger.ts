@@ -8,7 +8,8 @@ export interface ISubscriber {
 }
 
 export class Logger {
-  private logs: ILogBody[] = [];
+  public logs: ILogBody[] = [];
+
   private subscribers: Set<ISubscriber> = new Set();
   private isDispatching = false;
   private assertDispatching(caller: string) {
