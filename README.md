@@ -24,7 +24,6 @@ logger.subscribe(console.info);
 // Add a new line
 const log = logger.log;
 log('Hello World!');
-`
 ```
 
 ## Sharing loggers between independent libraries
@@ -39,11 +38,12 @@ const loggerB = createLogger();
 console.log(loggerA === loggerB); // true
 
 const loggerC = createLogger('You can use different reference with key string');
-console.log(loggerA === loggerC) // false
+console.log(loggerA === loggerC); // false
 
 // Yes, This is global injection :P
-console.log(loggerC === window['You can use different reference with key string']); // true
-`
+console.log(
+  loggerC === window['You can use different reference with key string']
+); // true
 ```
 
 If you hate this way, you can use constructor. This way **DO NOT** global injection.
