@@ -23,14 +23,14 @@ export class Logger {
   /**
    * Add a new message as single line. A line can contain few words.
    */
-  public log: (...line: string[]) => void = this.add.bind(this);
+  public log: (...line: any[]) => void = this.add.bind(this);
 
-  private add(...line: string[]) {
+  private add(...line: any[]) {
     this.assertDispatching('log()');
     try {
       this.isDispatching = true;
       const time = Date.now();
-      const log: ILogBody = { line, time };
+      const log: ILogBody = { line: line.map(toString), time };
       this.logs.push(log);
       for (const subscriber of this.subscribers) {
         subscriber(log.line, log.time);
@@ -71,5 +71,20 @@ export class Logger {
   public stringify(lineDelimiter = '\n', wordDelimiter = ' ') {
     const strings = this.logs.map(log => log.line.join(wordDelimiter));
     return strings.join(lineDelimiter);
+  }
+}
+
+export function toString(value: any): string {
+  if (typeof value === 'string') return value;
+  if (typeof value.toString === 'function') return value.toString();
+  try {
+    return JSON.stringify(value);
+  } catch (error) {
+    let str = '{';
+    str += Object.keys(value)
+      .slice(0, 5)
+      .map(key => `${key}: ${toString(value[key])}`)
+      .join(', ');
+    return str + '}';
   }
 }
