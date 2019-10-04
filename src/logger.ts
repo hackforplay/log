@@ -74,19 +74,18 @@ export class Logger {
   }
 }
 
-export function toString(value: any): string {
+export function toString(value: any, nest = 0): string {
   if (typeof value === 'string') return value;
   if (typeof value === 'undefined') return 'undefined';
   if (value === null) return 'null';
-  if (typeof value.toString === 'function') return value.toString();
-  try {
-    return JSON.stringify(value);
-  } catch (error) {
-    let str = '{';
-    str += Object.keys(value)
-      .slice(0, 5)
-      .map(key => `${key}: ${toString(value[key])}`)
-      .join(', ');
-    return str + '}';
-  }
+  if (value.constructor !== Object && typeof value.toString === 'function')
+    return value.toString(); // value is NOT plain object and it has own toString method
+
+  if (nest > 2) return typeof value; // too deep to stringify!
+  let str = '{ ';
+  str += Object.keys(value)
+    .slice(0, 5)
+    .map(key => `${key}: ${toString(value[key], nest + 1)}`)
+    .join(', ');
+  return str + ' }';
 }
