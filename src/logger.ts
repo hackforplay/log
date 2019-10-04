@@ -76,6 +76,8 @@ export class Logger {
 
 export function toString(value: any): string {
   if (typeof value === 'string') return value;
+  if (typeof value === 'undefined') return 'undefined';
+  if (value === null) return 'null';
   if (typeof value.toString === 'function') return value.toString();
   try {
     return JSON.stringify(value);
