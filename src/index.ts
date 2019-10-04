@@ -13,7 +13,7 @@ export function createLogger(
   return logger;
 }
 
-export function log(...args: string[]) {
+export function log(...args: any[]) {
   createLogger().log(...args);
 }
 
